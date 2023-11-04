@@ -8,6 +8,7 @@
 }
 body{
   font-family: 'Edu TAS Beginner', cursive;
+  background-image: linear-gradient(to right, #525354, #0a3040);
 }
 .container{
   margin-left: auto;
@@ -28,5 +29,123 @@ body{
 @media (min-width:1200px) {
   .container{
       width:1170px;
+  }
+}
+.page .container{
+  text-align: center;
+  padding-top: 100px;
+}
+.page .container h1{
+  font-size: 100px;
+  color: #ffdfdb;
+  letter-spacing: 5px;
+  width: fit-content;
+  position: relative;
+  margin: 0 auto;
+}
+@media (max-width:767px){
+  .page .container h1{
+    font-size: 50px;
+  }
+}
+.page .container h1::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color:black ;
+}
+form{
+  max-width: 450px;
+  display: flex;
+  margin: 20px auto;
+}
+form input:first-child{
+  width: 80%;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+form input:first-child:focus{
+  outline: none;
+
+}
+form input:last-child{
+  width: 20%;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+form input{
+  border: none;
+}
+.toDo{
+  background-color: #242e33;
+  padding: 8px 12px;
+  border-radius: 20px;
+  max-width: 350px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toDo h2{
+  color: white;
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.toDo .icons{
+  display: flex;
+}
+.toDo .icons .icon{
+  font-size: 20px;
+  cursor: pointer;
+}
+.toDo .icons .circle{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #999293;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  position: relative;
+  z-index: 1;
+}
+.toDo .icons .circle::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+  background-color: #FFA07A ;
+  z-index: -1;
+}
+.toDo .icons .circle:hover::before{
+  transition: all 0.25s linear;
+  width: 100%;
+  height: 100%;
+}
+.spinner{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px auto;
+  border: none;
+  border-right: 5px solid #ffdfdb ;
+  animation:spinnerMotion 1s linear infinite ;
+}
+@keyframes spinnerMotion{
+  100%{
+    transform: rotate(360deg);
   }
 }
