@@ -11,12 +11,12 @@ function Content(){
         isLoading: false,
         error: ""
     })
-
+    const [idCounter, setIdCounter] = useState<number>(10);
     useEffect(()=>{
         const fetchData= async ()=>{
             try{
                 const todosList= (await axios.get("https://jsonplaceholder.typicode.com/todos")).data;
-                setData({...data, todos: todosList.slice(0, 10), isLoading: true}) // take just 10 elements instead of all the return from the API (200 elements)
+                setData({...data, todos: todosList.slice(0, 3), isLoading: true}) // take just 3 elements instead of all the return from the API (200 elements)
             }catch(e:any){
                 setData({...data, error:e, isLoading: true})
             }
@@ -26,7 +26,10 @@ function Content(){
 
     async function onSubmitSuccess(newToDo:{title: string, completed: boolean}){
         const element= await axios.post("https://jsonplaceholder.typicode.com/todos", newToDo)
+        element.data.id= idCounter;
          setData({...data, todos:[...data.todos, element.data]})
+         setIdCounter(idCounter+1)
+         console.log(element.data)
     }
 
     function handleCheck(id: number){
